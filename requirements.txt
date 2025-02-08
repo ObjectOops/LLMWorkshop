@@ -1,0 +1,6 @@
+grpcio==1.67.1
+grpcio-status==1.67.1
+llama-index==0.12.16
+llama-index-core==0.12.16.post1
+llama-index-embeddings-gemini==0.3.1
+python-dotenv==1.0.1

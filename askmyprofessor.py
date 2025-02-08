@@ -3,12 +3,11 @@ from llama_index.core.settings import Settings
 from llama_index.llms.gemini import Gemini
 from llama_index.embeddings.gemini import GeminiEmbedding
 from llama_index.core import StorageContext, load_index_from_storage
+from dotenv import load_dotenv
 
 import os
 
-GOOGLE_API_KEY = ""  # add your GOOGLE API key here
-os.environ["GOOGLE_API_KEY"] = GOOGLE_API_KEY
-
+load_dotenv()
 
 Settings.llm  = Gemini(
     model="models/gemini-1.5-flash",
@@ -31,3 +30,7 @@ storage_context = StorageContext.from_defaults(persist_dir="prof_embeddings")
 # load index
 index = load_index_from_storage(storage_context)
 
+
+query_engine = index.as_query_engine()
+response = query_engine.query("List all ECE classes.")
+print(response)
